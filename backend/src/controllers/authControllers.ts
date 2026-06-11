@@ -1,3 +1,4 @@
+import { AuthRequest } from "../types/auth.types";
 import { Request, Response } from "express";
 import User from "../models/user.model";
 import generateToken from "../utils/generateToken";
@@ -107,4 +108,14 @@ export const loginUser = async (
     error,
     });
   }
+};
+
+export const getProfile = async (
+  req: AuthRequest,
+  res: Response
+): Promise<void> => {
+  res.status(200).json({
+    success: true,
+    user: req.user,
+  });
 };
